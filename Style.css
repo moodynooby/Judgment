@@ -1,0 +1,108 @@
+/* ... other styles ... */
+
+.hand-value-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-bottom: 1rem; /* Adjust spacing as needed */
+}
+
+.handValue {
+    padding: 0.5rem 1rem;
+    border: 2px solid #dbdbdb; /* Light gray border */
+    border-radius: 4px;
+}
+/* ... other styles ... */
+
+.buttons.is-centered {
+    justify-content: center; /* Center buttons horizontally */
+}
+
+.buttons .button {
+    margin: 0 0.5rem; /* Add spacing between buttons */
+}
+/* ... other styles ... */
+
+#unifiedScoreTable th:first-child {
+    font-weight: bold; /* Make the first column header bold */
+}
+
+#unifiedScoreTable td:first-child {
+    font-weight: bold; /* Make the first column cells bold */
+    text-align: center; /* Center the content in the first column cells */
+}
+
+/* Style for the selected row */
+#unifiedScoreTable tr.is-selected {
+    background-color: lightblue; /* Or any color you prefer */
+}
+.body {
+    text-align: center;
+    font-family: 'Zilla Slab', serif; /* Apply Zilla Slab to the entire body */
+
+}
+
+.container {
+    max-width: 800px; /* Limit container width for better readability */
+    margin: 0 auto; /* Center the container horizontally */
+}
+.zilla-slab-light {
+    font-family: "Zilla Slab", serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.zilla-slab-regular {
+    font-family: "Zilla Slab", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.zilla-slab-medium {
+    font-family: "Zilla Slab", serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.zilla-slab-semibold {
+    font-family: "Zilla Slab", serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.zilla-slab-bold {
+    font-family: "Zilla Slab", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.zilla-slab-light-italic {
+    font-family: "Zilla Slab", serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.zilla-slab-regular-italic {
+    font-family: "Zilla Slab", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.zilla-slab-medium-italic {
+    font-family: "Zilla Slab", serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.zilla-slab-semibold-italic {
+    font-family: "Zilla Slab", serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.zilla-slab-bold-italic {
+    font-family: "Zilla Slab", serif;
+    font-weight: 700;
+    font-style: italic;
+}
