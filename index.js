@@ -119,15 +119,14 @@ function processRound() {
 
         if (selectedPlayerIndices.includes(index)) {
             roundScore = player.hand === 0 ? 10 : player.hand * 10;
-            player.score += roundScore; // Update total score
+            player.score += roundScore;
         }
 
         const scoreCell = newRow.insertCell();
-        scoreCell.innerText = roundScore; // Display round score in the table
+        scoreCell.innerText = roundScore;
     });
 
     currentRound++;
-
     playerSelectorModal.classList.remove('is-active');
 }
 
