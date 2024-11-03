@@ -22,15 +22,17 @@
 .buttons .button {
     margin: 0 0.5rem; /* Add spacing between buttons */
 }
-/* ... other styles ... */
 
 #unifiedScoreTable th:first-child {
     font-weight: bold; /* Make the first column header bold */
+    text-align: center; /* Center the content in the first column header */
+
 }
 
 #unifiedScoreTable td:first-child {
     font-weight: bold; /* Make the first column cells bold */
     text-align: center; /* Center the content in the first column cells */
+
 }
 
 /* Style for the selected row */
@@ -106,3 +108,5 @@
     font-weight: 700;
     font-style: italic;
 }
+
+

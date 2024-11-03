@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Judgment Game</title>
-    <link href='/style.css' rel='stylesheet'>
+    <link href="style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 </head>
-<body >
+<body>
 <div class="container">
     <h1 class="title is-1">The Game Of Judgment</h1>
+
     <div id="initialPage">
         <div class="field">
             <label class="label" for="numPlayers">Number of Players:</label>
@@ -24,10 +25,14 @@
     <div id="gameArea" style="display: none;">
         <div class="columns is-multiline" id="playerContainers">
         </div>
+
         <div class="column buttons is-centered">
-            <button class="button is-info is-large is-responsive is-rounded" id="calculateButton">Next Round</button>
-            <button class="button is-danger is-large is-responsive is-rounded" id="endGameButton">Calculate</button>
+            <button class="button is-info is-large is-responsive is-rounded" id="calculateButton">Next Round
+            </button>
+            <button class="button is-danger is-large is-responsive is-rounded" id="endGameButton">Calculate
+            </button>
         </div>
+
         <table class="table is-bordered" id="unifiedScoreTable">
             <thead>
             <tr>
@@ -38,7 +43,8 @@
             <tbody>
             </tbody>
         </table>
-        <div id="finalScores" style="display: none;"></div>
+
+        <div id="finalScores" style="display: none;"> </div>
 
         <div class="modal" id="playerSelectorModal">
             <div class="modal-background"></div>
@@ -62,11 +68,9 @@
                     <div class="hand-value-box">
                         <span class="handValue">0</span>
                     </div>
-                    <div class="buttons is-centered"> <div class="buttons">
+                    <div class="buttons is-centered">
                         <button class="button is-primary is-large is-responsive is-rounded addButton">+</button>
                         <button class="button is-danger is-large is-responsive is-rounded subtractButton">-</button>
-                    </div>
-
                     </div>
                 </div>
             </div>
@@ -74,7 +78,6 @@
     </template>
 
     <script src="index.js"></script>
-
 </div>
 </body>
 </html>
