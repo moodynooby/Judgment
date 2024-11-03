@@ -115,7 +115,7 @@ function processRound() {
     roundCell.innerText = currentRound;
 
     players.forEach((player, index) => {
-        let roundScore = 0; // Variable to store the round score
+        let roundScore = 0;
 
         if (selectedPlayerIndices.includes(index)) {
             roundScore = player.hand === 0 ? 10 : player.hand * 10;
