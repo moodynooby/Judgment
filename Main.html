@@ -1,78 +1,83 @@
 <!DOCTYPE html>
-<html>
+<!--suppress ALL -->
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Judgment Game</title>
-    <link href='/style.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link href='/Style.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="https://www.svgrepo.com/download/422665/cards-game-casino.svg" type="image/x-icon">
-
     <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 </head>
-<body >
-<div class="container">
-    <h1 class="title is-1">The Game Of Judgment</h1>
-    <div id="initialPage">
-        <div class="field">
-            <label class="label" for="numPlayers">Number of Players:</label>
-            <input class="input" type="number" id="numPlayers" min="1" value="1">
-        </div>
-        <button class="button is-primary" id="startGame">Start Game</button>
-    </div>
+<body data-theme="dark" >
+<h1 class="font-bold text-5xl text-center mb-8 ">The Game Of Judgment</h1>
 
+<div class="container mx-auto px-4">
+    <div id="initialPage" class=" flex flex-col  items-center gap-6">
+        <div class="form-control w-full max-w-xs">
+            <label class="label" for="numPlayers">
+                <span class="label-text text-lg">Number of Players:</span>
+            </label>
+            <input class="input input-bordered input-primary w-full"
+                   type="number"
+                   id="numPlayers"
+                   min="1"
+                   value="2">
+        </div>
+        <button class="btn btn-primary btn-lg" id="startGame">Start Game</button>
+    </div>
     <div id="gameArea" style="display: none;">
-        <div class="columns is-multiline" id="playerContainers">
+        <div class="columns" id="playerContainers">
         </div>
-        <div class="column buttons is-centered">
-            <button class="button is-info is-large is-responsive is-rounded" id="calculateButton">Next Round</button>
-            <button class="button is-danger is-large is-responsive is-rounded" id="endGameButton">Calculate</button>
+        <div class="controls">
+            <button class="btn btn-primary btn-lg" id="calculateButton" onclick="playerSelectorModal.showModal()">Next Round</button>
+            <button class="btn btn-error btn-lg" id="endGameButton">Calculate</button>
         </div>
-        <table class="table is-bordered" id="unifiedScoreTable">
+        <div class="overflow-x-auto">
+        <table class="table table-pin-rows text-secondary" id="unifiedScoreTable">
             <thead>
             <tr>
-                <th class="has-text-centered">Round</th>
+                <th>Round</th>
                 <th id="playerNamesHeader"></th>
             </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
-        <div id="finalScores" style="display: none;"></div>
-
-        <div class="modal" id="playerSelectorModal">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <div class="box">
-                    <h3 class="title is-4">Which players succeeded</h3>
-                    <form id="playerSelectorForm">
-                    </form>
-                    <button class="button is-primary" id="confirmSelection">Confirm</button>
-                </div>
-            </div>
-            <button class="modal-close is-large" aria-label="close"></button>
         </div>
+        <div id="finalScores" ></div>
+
+        <dialog class="modal" id="playerSelectorModal">
+            <div class="modal-box">
+                <h3 class="font-bold text-lg mb-4">Select Successful Players</h3>
+                <form id="playerSelectorForm" class="space-y-4">
+                </form>
+            <div class="modal-action">
+            <form method="dialog">
+                <button class="btn btn-primary btn-lg" id="confirmSelection">Confirm</button>
+            </form>
+            </div>
+            </div>
+        </dialog>
     </div>
 
     <template id="playerTemplate">
-        <div class="column is-4">
-            <div class="card">
-                <div class="card-content">
-                    <input class="input is-primary title playerName" type="text" placeholder="Player Name">
-                    <div class="hand-value-box">
+        <div style="border: 5px solid oklch(var(--p));    border-width: 5px; border-radius: 1rem;">
+            <div class="card bg-base-100 text-neutral-content w-96 shadow-xl">
+                <div class="card-body">
+                    <input class="input input-bordered input-accent py-3 w-full max-w-xs playerName" type="text" placeholder="Player Name">
+                    <div class="inputs">
+                        <button class="btn btn-primary  btn-outline addButton btn-lg btn-circle">+</button>
                         <span class="handValue">0</span>
+                        <button class="btn btn-error  btn-outline subtractButton btn-lg btn-circle">-</button>
                     </div>
-                    <div class="buttons is-centered"> <div class="buttons">
-                        <button class="button is-primary is-large is-responsive is-rounded addButton">+</button>
-                        <button class="button is-danger is-large is-responsive is-rounded subtractButton">-</button>
-                    </div>
-
                     </div>
                 </div>
             </div>
-        </div>
     </template>
 
     <script src="index.js"></script>

@@ -90,7 +90,7 @@ function updatePlayerNamesHeader() {
 }
 
 function openPlayerSelectorModal() {
-    playerSelectorModal.classList.add('is-active');
+    playerSelectorModal.classList.add('bg-base-200');
     playerSelectorForm.innerHTML = '';
 
     players.forEach((player, index) => {
@@ -127,7 +127,7 @@ function processRound() {
     });
 
     currentRound++;
-    playerSelectorModal.classList.remove('is-active');
+    playerSelectorModal.classList.remove('bg-base-200');
 }
 
 function displayFinalScores() {
