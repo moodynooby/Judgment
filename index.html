@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<!--suppress ALL -->
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Judgment Game</title>
-    <link href='/Style.css' rel='stylesheet'>
+    <link href='style.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,10 +65,12 @@
     </div>
 
     <template id="playerTemplate">
-        <div style="border: 5px solid oklch(var(--p));    border-width: 5px; border-radius: 1rem;">
+        <div style=" /*noinspection CssUnresolvedCustomProperty*/ border: 5px solid oklch(var(--p));   border-radius: 1rem;">
             <div class="card bg-base-100 text-neutral-content w-96 shadow-xl">
                 <div class="card-body">
-                    <input class="input input-bordered input-accent py-3 w-full max-w-xs playerName" type="text" placeholder="Player Name">
+                    <label>
+                        <input class="input input-bordered input-accent py-3 w-full max-w-xs playerName" type="text" placeholder="Player Name">
+                    </label>
                     <div class="inputs">
                         <button class="btn btn-primary  btn-outline addButton btn-lg btn-circle">+</button>
                         <span class="handValue">0</span>

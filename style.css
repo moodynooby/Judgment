@@ -1,6 +1,6 @@
-/*noinspection ALL*/
 .handValue {
     padding: 0.5rem 1rem;
+    /*noinspection CssUnresolvedCustomProperty*/
     border: 2px solid oklch(var(--s));
     border-radius: 4rem;
     font-size: 1.3rem;
