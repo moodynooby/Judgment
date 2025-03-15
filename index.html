@@ -37,7 +37,7 @@
             <button class="btn btn-error btn-lg" id="endGameButton">Calculate</button>
         </div>
         <div class="overflow-x-auto">
-        <table class="table table-pin-rows text-secondary" id="unifiedScoreTable">
+        <table class="table table-pin-rows text-secondary"  id="unifiedScoreTable">
             <thead>
             <tr>
                 <th>Round</th>
@@ -65,11 +65,11 @@
     </div>
 
     <template id="playerTemplate">
-        <div style=" /*noinspection CssUnresolvedCustomProperty*/ border: 5px solid oklch(var(--p));   border-radius: 1rem;">
+        <div style=" border: 5px solid oklch(var(--p));   border-radius: 1rem;">
             <div class="card bg-base-100 text-neutral-content w-96 shadow-xl">
                 <div class="card-body">
                     <label>
-                        <input class="input input-bordered input-accent py-3 w-full max-w-xs playerName" type="text" placeholder="Player Name">
+                        <input class="input input-bordered py-3 w-full max-w-xs playerName" type="text" placeholder="Player Name">
                     </label>
                     <div class="inputs">
                         <button class="btn btn-primary  btn-outline addButton btn-lg btn-circle">+</button>
