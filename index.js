@@ -29,9 +29,7 @@ confirmSelectionButton.addEventListener('click', () => {
     processRound();
 });
 
-endGameButton.addEventListener('click', () => {
-    displayFinalScores();
-});
+
 
 function initializeGame(numPlayers) {
     initialPage.style.display = 'none';
@@ -81,27 +79,35 @@ function createPlayer(index) {
 }
 
 function updatePlayerNamesHeader() {
-    playerNamesHeader.innerHTML = '';
+    const headerRow = document.querySelector('#unifiedScoreTable thead tr');
+    // Remove all cells except the first 'Round' column
+    while (headerRow.cells.length > 1) {
+        headerRow.deleteCell(1);
+    }
+    // Add player name cells
     players.forEach((player) => {
         const playerNameCell = document.createElement('th');
         playerNameCell.innerText = player.name;
-        playerNamesHeader.appendChild(playerNameCell);
+        headerRow.appendChild(playerNameCell);
     });
 }
 
 function openPlayerSelectorModal() {
-    playerSelectorModal.classList.add('bg-base-200');
     playerSelectorForm.innerHTML = '';
 
     players.forEach((player, index) => {
-        const checkboxLabel = document.createElement('label');
-        checkboxLabel.className = 'checkbox';
-        checkboxLabel.innerHTML = `
-      <input type="checkbox" value="${index}" checked>
-      ${player.name}
-    `;
-        playerSelectorForm.appendChild(checkboxLabel);
+        const checkboxDiv = document.createElement('div');
+        checkboxDiv.className = 'w3-padding-small';
+        checkboxDiv.innerHTML = `
+            <label class="w3-text-dark-grey">
+                <input class="w3-check" type="checkbox" value="${index}" checked>
+                ${player.name}
+            </label>
+        `;
+        playerSelectorForm.appendChild(checkboxDiv);
     });
+
+    playerSelectorModal.showModal();
 }
 
 function processRound() {
@@ -127,12 +133,15 @@ function processRound() {
     });
 
     currentRound++;
-    playerSelectorModal.classList.remove('bg-base-200');
+    playerSelectorModal.close();
 }
 
 function displayFinalScores() {
     finalScoresDiv.innerHTML = '';
     finalScoresDiv.style.display = 'block';
+    gameArea.style.display = 'none';
+
+    
 
     const heading = document.createElement('h2');
     heading.textContent = 'Final Scores';
@@ -140,8 +149,16 @@ function displayFinalScores() {
 
     const scoreList = document.createElement('ul');
     players.forEach((player) => {
+        const rank = players
+            .map(p => p.score)
+            .sort((a, b) => b - a)
+            .indexOf(player.score) + 1;
         const listItem = document.createElement('li');
-        listItem.textContent = `${player.name}: ${player.score}`;
+        // Sort players by score in descending order
+        const sortedPlayers = [...players].sort((a, b) => b.score - a.score);
+        // Find player's index in sorted array to determine rank
+        const playerRank = sortedPlayers.findIndex(p => p.name === player.name) + 1;
+        listItem.textContent = `#${playerRank} ${player.name}: ${player.score}`;
         scoreList.appendChild(listItem);
     });
 

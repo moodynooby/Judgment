@@ -1,88 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=2.0" />
     <title>Judgment Game</title>
     <link href='style.css' rel='stylesheet'>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" href="icon.svg" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="icon" href="gamepad-svgrepo-com.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body data-theme="dark" >
-<h1 class="font-bold text-5xl text-center mb-8 ">The Game Of Judgment</h1>
 
-<div class="container mx-auto px-4">
-    <div id="initialPage" class=" flex flex-col  items-center gap-6">
-        <div class="form-control w-full max-w-xs">
-            <label class="label" for="numPlayers">
-                <span class="label-text text-lg">Number of Players:</span>
-            </label>
-            <input class="input input-bordered input-primary w-full"
-                   type="number"
-                   id="numPlayers"
-                   min="1"
-                   value="2">
-        </div>
-        <button class="btn btn-primary btn-lg" id="startGame">Start Game</button>
-    </div>
-    <div id="gameArea" style="display: none;">
-        <div class="columns" id="playerContainers">
-        </div>
-        <div class="controls">
-            <button class="btn btn-primary btn-lg" id="calculateButton" onclick="playerSelectorModal.showModal()">Next Round</button>
-            <button class="btn btn-error btn-lg" id="endGameButton">Calculate</button>
-        </div>
-        <div class="overflow-x-auto">
-        <table class="table table-pin-rows text-secondary"  id="unifiedScoreTable">
-            <thead>
-            <tr>
-                <th>Round</th>
-                <th id="playerNamesHeader"></th>
-            </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-        </div>
-        <div id="finalScores" ></div>
+<body>
 
-        <dialog class="modal" id="playerSelectorModal">
-            <div class="modal-box">
-                <h3 class="font-bold text-lg mb-4">Select Successful Players</h3>
-                <form id="playerSelectorForm" class="space-y-4">
+    <div class="container mx-auto px-4">
+        <div id="initialPage" class=" flex flex-col  items-center gap-6">
+            <h1>The Game Of Judgment</h1><img src="gamepad-svgrepo-com.svg" alt="gamepad" >
+            <p>
+                Welcome to the game of Judgment! In this game, each player will be given a hand of cards. The goal is to
+                determine the
+                total value of the cards in each hand. The player with the highest total value wins the round.
+            </p>
+            <p>
+
+            <div class="w3-container">
+                <label class="label" for="numPlayers">
+                    <span class="label-text text-center">Number of Players:</span>
+                </label>
+                <input class="w3-input w3-border w3-round" type="number" id="numPlayers" min="1" value="4">
+            </div>
+            <button class="w3-button w3-ripple w3-round w3-blue " id="startGame">Start Game</button>
+        </div>
+        <div id="gameArea" style="display: none; text-align: center;">
+            <div class="columns" id="playerContainers">
+            </div>
+            <div class="controls">
+                <button class="w3-button w3-ripple w3-round w3-border w3-border-blue" id="calculateButton"
+                    onclick="playerSelectorModal.showModal()">Next Round</button>
+                <button class="w3-button w3-ripple w3-round w3-border w3-border-black"
+                    id="endGameButton" onclick="displayFinalScores()">End Game</button>
+            </div>
+            <div>
+                <table id="unifiedScoreTable">
+                    <thead>
+                        <tr>
+                            <th>Round</th>
+                            <th id="playerNamesHeader" style="display: none;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+         
+
+            <dialog id="playerSelectorModal">
+                <h3 class="w3-text-blue">Select Successful Players</h3>
+                <form id="playerSelectorForm" class="w3-container w3-padding">
                 </form>
-            <div class="modal-action">
-            <form method="dialog">
-                <button class="btn btn-primary btn-lg" id="confirmSelection">Confirm</button>
-            </form>
-            </div>
-            </div>
-        </dialog>
-    </div>
-
-    <template id="playerTemplate">
-        <div style=" border: 5px solid oklch(var(--p));   border-radius: 1rem;">
-            <div class="card bg-base-100 text-neutral-content w-96 shadow-xl">
-                <div class="card-body">
-                    <label>
-                        <input class="input input-bordered py-3 w-full max-w-xs playerName" type="text" placeholder="Player Name">
-                    </label>
-                    <div class="inputs">
-                        <button class="btn btn-primary  btn-outline addButton btn-lg btn-circle">+</button>
-                        <span class="handValue">0</span>
-                        <button class="btn btn-error  btn-outline subtractButton btn-lg btn-circle">-</button>
-                    </div>
+                <div class="w3-container w3-padding-16 w3-right-align">
+                    <button class="w3-button w3-ripple w3-round w3-blue" id="confirmSelection">Confirm</button>
+                    <button class="w3-button w3-ripple w3-round w3-border w3-border-black"
+                        onclick="playerSelectorModal.close()">Cancel</button>
+                </div>
+            </dialog>
+        </div>
+        <div id="finalScores"></div>
+        <template id="playerTemplate">
+            <div class="playerBox w3-round w3-border w3-border-blue w3-hover w3-hover-pale-blue">
+                <div class="card bg-base-100 text-neutral-content w-96 shadow-xl">
+                    <div class="card-body">
+                        <label>
+                            <input class="w3-input w3-border w3-round py-3 w-full max-w-xs playerName" type="text"
+                                placeholder="Player Name">
+                        </label>
+                        <div class="inputs">
+                            <button class="w3-button w3-ripple w3-round-xlarge addButton">+</button>
+                            <span class="handValue">0</span>
+                            <button class="w3-button w3-ripple w3-round-xlarge subtractButton">-</button>
+                        </div>
                     </div>
                 </div>
             </div>
-    </template>
+        </template>
 
-    <script src="index.js"></script>
+        <script src="index.js"></script>
 
-</div>
+    </div>
 </body>
+
 </html>
