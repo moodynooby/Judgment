@@ -2,9 +2,9 @@
 
 ## Visual Elements
 - Visual effects for milestone scores
-- Add a round visulalization
 - Mini achievements popup
-
+- Add more animations 
+- add a sum funciton
 ## UI Improvements
 - Animated score numbers
 - Color-coded point values

@@ -12,6 +12,17 @@ const finalScoresDiv = document.getElementById('finalScores');
 const playerSelectorModal = document.getElementById('playerSelectorModal');
 const playerSelectorForm = document.getElementById('playerSelectorForm');
 const confirmSelectionButton = document.getElementById('confirmSelection');
+const roundNumberDisplay = document.getElementById('roundNumber');
+const trumpCardImage = document.getElementById('trumpCardImage');
+
+const trumpCards = [
+    'icons8-spades-48.png',
+    'icons8-diamonds-48.png',
+    'icons8-clubs-48.png',
+    'icons8-favorite-48.png', // This is typically 'hearts'
+    'icons8-joker-48.png'
+];
+let currentTrumpCardIndex = 0;
 
 let players = [];
 let currentRound = 1;
@@ -37,8 +48,11 @@ function initializeGame(numPlayers) {
 
     players = [];
     currentRound = 1;
+    currentTrumpCardIndex = 0;
     unifiedScoreTable.getElementsByTagName('tbody')[0].innerHTML = '';
     playerNamesHeader.innerHTML = '';
+    roundNumberDisplay.innerText = `Round: ${currentRound}`;
+    trumpCardImage.src = trumpCards[currentTrumpCardIndex];
 
     for (let i = 0; i < numPlayers; i++) {
         createPlayer(i);
@@ -133,6 +147,9 @@ function processRound() {
     });
 
     currentRound++;
+    roundNumberDisplay.innerText = `Round: ${currentRound}`;
+    currentTrumpCardIndex = (currentTrumpCardIndex + 1) % trumpCards.length;
+    trumpCardImage.src = trumpCards[currentTrumpCardIndex];
     playerSelectorModal.close();
 }
 

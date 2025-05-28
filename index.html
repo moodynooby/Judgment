@@ -15,7 +15,7 @@
 
     <div class="container mx-auto px-4">
         <div id="initialPage" class=" flex flex-col  items-center gap-6">
-            <h1>The Game Of Judgment</h1><img src="gamepad-svgrepo-com.svg" alt="gamepad" >
+            <h1>The Game Of Judgment</h1><img src="gamepad-svgrepo-com.svg" alt="gamepad">
             <p>
                 Welcome to the game of Judgment! In this game, each player will be given a hand of cards. The goal is to
                 determine the
@@ -32,13 +32,21 @@
             <button class="w3-button w3-ripple w3-round w3-blue " id="startGame">Start Game</button>
         </div>
         <div id="gameArea" style="display: none; text-align: center;">
+            <header>
+                <h1>Game of Judgment</h1>
+                <h2 id="roundNumber">Round:</h2>
+                <span id="trumpCardDisplay" style="   display: flex;
+  align-items: flex-start; justify-content: space-around;">Trump Cards: <img id="trumpCardImage" src="" alt="Trump Card"
+                        style="width: 48px; height: 48px; "></span>
+            </header>
+
             <div class="columns" id="playerContainers">
             </div>
             <div class="controls">
                 <button class="w3-button w3-ripple w3-round w3-border w3-border-blue" id="calculateButton"
                     onclick="playerSelectorModal.showModal()">Next Round</button>
-                <button class="w3-button w3-ripple w3-round w3-border w3-border-black"
-                    id="endGameButton" onclick="displayFinalScores()">End Game</button>
+                <button class="w3-button w3-ripple w3-round w3-border w3-border-black" id="endGameButton"
+                    onclick="displayFinalScores()">End Game</button>
             </div>
             <div>
                 <table id="unifiedScoreTable">
@@ -52,7 +60,7 @@
                     </tbody>
                 </table>
             </div>
-         
+
 
             <dialog id="playerSelectorModal">
                 <h3 class="w3-text-blue">Select Successful Players</h3>
